@@ -1,0 +1,15 @@
+{
+  "name": "@transportme/transportvic-utils",
+  "version": "1.0.1",
+  "main": "index.mjs",
+  "scripts": {
+    "test": "mocha"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "chai": "^5.1.2",
+    "mocha": "^11.0.1"
+  }
+}
