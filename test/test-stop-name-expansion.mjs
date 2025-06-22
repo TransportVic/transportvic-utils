@@ -166,4 +166,9 @@ describe('The amendStopDirection function', () => {
     let original = 'east of Pechell St'
     expect(amendStopDirection(original)).to.equal('Pechell St - East')
   })
+
+  it('Should only handle cardinal directions', () => {
+    let original = 'School of the Good Shepherd'
+    expect(amendStopDirection(original)).to.equal('School of the Good Shepherd')
+  })
 })

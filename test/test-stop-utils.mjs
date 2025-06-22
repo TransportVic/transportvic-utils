@@ -1,5 +1,7 @@
 import { expect } from 'chai'
-import { isStreetStop, getPrimaryStopName, getSecondaryStopName, sanitiseName } from '../stop-utils/stop-utils.mjs'
+import STOP_UTILS from '../stop-utils/stop-utils.mjs'
+
+const { isStreetStop, getPrimaryStopName, getSecondaryStopName, sanitiseName } = STOP_UTILS
 
 describe('The isStreetStop function', () => {
   it('Should return true if the primary stop name ends in a defined road type', () => {
