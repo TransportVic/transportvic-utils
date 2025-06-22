@@ -11,6 +11,12 @@ export function expandRoadType(stopName) {
     .replace(/St$/, 'Street')
     .replace(/St S((ou)?th)?$/, 'Street South')
     .replace(/St N((or)?th)?$/, 'Street North')
+
+    .replace(/ N( Road)?$/, ' North$1')
+    .replace(/ S( Road)?$/, ' South$1')
+    .replace(/ E( Road)?$/, ' East$1')
+    .replace(/ W( Road)?$/, ' West$1')
+
     .replace(/St -/g, 'Street -')
     .replace(/Mt\.? /g, 'Mount ')
     .replace(/ Ave?(\b)/g, ' Avenue$1') // Cannot be at the start of a stop name, eg Ave Maria College

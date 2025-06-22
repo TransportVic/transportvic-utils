@@ -7,9 +7,21 @@ describe('The road name expansion', () => {
       expect(expandRoadType('James St')).to.equal('James Street')
     })
 
-    it('Should expand St if it is followed by a N or S', () => {
+    it('Should expand N/S/E/W if it appears at the end of a name', () => {
       expect(expandRoadType('Gillies St S')).to.equal('Gillies Street South')
       expect(expandRoadType('Gillies St N')).to.equal('Gillies Street North')
+
+      expect(expandRoadType('Specimen Vale S')).to.equal('Specimen Vale South')
+      expect(expandRoadType('Specimen Vale S')).to.equal('Specimen Vale South')
+      expect(expandRoadType('Fairy St E')).to.equal('Fairy St East')
+    })
+
+    it('Should expand N/S/E/W if it appears directly before road', () => {
+      expect(expandRoadType('Main S Road')).to.equal('Main South Road')
+    })
+
+    it('Should not expand N/S/E/W if it appears in an initialism', () => {
+      expect(expandRoadType('S C Mills Park')).to.equal('S C Mills Park')
     })
 
     it('Should expand St if it is followed by a full direction such as North or South', () => {
