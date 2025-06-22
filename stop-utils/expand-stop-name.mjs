@@ -1,5 +1,7 @@
 import roadTypes from './road-types.json' with { type: 'json' }
 
+const DIRECTIONS = ['NORTH', 'SOUTH', 'EAST', 'WEST']
+
 export function expandRoadType(stopName) {
   for (let name of Object.keys(roadTypes)) {
     stopName = stopName.replace(new RegExp('(\\b)' + name + '(\\b)'), '$1' + roadTypes[name] + '$2')
@@ -68,7 +70,10 @@ export function amendStopDirection(stopName) {
   }).replace(/(.*?) +\( *(\w+)(?: +Side)?\)/i, (match, road, direction) => {
     return `${road} - ${direction[0].toUpperCase()}${direction.slice(1).toLowerCase()}`
   }).replace(/^(\w+) of (.+)/, (match, direction, road) => {
-    return `${road} - ${direction[0].toUpperCase()}${direction.slice(1).toLowerCase()}`
+    if (DIRECTIONS.includes(direction.toUpperCase())) {
+      return `${road} - ${direction[0].toUpperCase()}${direction.slice(1).toLowerCase()}`
+    }
+    return match
   })
 }
 
