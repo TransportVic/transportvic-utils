@@ -10,10 +10,11 @@ describe('The road name expansion', () => {
     it('Should expand N/S/E/W if it appears at the end of a name', () => {
       expect(expandRoadType('Gillies St S')).to.equal('Gillies Street South')
       expect(expandRoadType('Gillies St N')).to.equal('Gillies Street North')
+      expect(expandRoadType('Asbury St West')).to.equal('Asbury Street West')
 
       expect(expandRoadType('Specimen Vale S')).to.equal('Specimen Vale South')
       expect(expandRoadType('Specimen Vale S')).to.equal('Specimen Vale South')
-      expect(expandRoadType('Fairy St E')).to.equal('Fairy St East')
+      expect(expandRoadType('Fairy St E')).to.equal('Fairy Street East')
     })
 
     it('Should expand N/S/E/W if it appears directly before road', () => {
@@ -154,6 +155,17 @@ describe('The stop name processer', () => {
   it('Should apply the cleanup and expansion functions', () => {
     expect(processName('St Helena SC')).to.equal('St. Helena Shopping Centre')
     expect(processName('19 High Street Rd')).to.equal('19 High Street Road')
+  })
+  
+
+  it('Should expand St to Street if it contains permitted words behind', () => {
+    expect(processName('Abbotsford St Interchange')).to.equal('Abbotsford Street Interchange')
+    expect(processName('Burke St Park')).to.equal('Burke Street Park')
+    expect(processName('Crawley St Reserve')).to.equal('Crawley Street Reserve')
+    expect(processName('Dumfries St SC')).to.equal('Dumfries Street Shopping Centre')
+    expect(processName('Mitchell St Central - Bay A')).to.equal('Mitchell Street Central - Bay A')
+    expect(processName('Dana St Primary School')).to.equal('Dana Street Primary School')
+    expect(processName('Dawson St Police Complex')).to.equal('Dawson Street Police Complex')
   })
 })
 

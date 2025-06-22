@@ -11,6 +11,8 @@ export function expandRoadType(stopName) {
     .replace(/St$/, 'Street')
     .replace(/St S((ou)?th)?$/, 'Street South')
     .replace(/St N((or)?th)?$/, 'Street North')
+    .replace(/St E(ast)?$/, 'Street East')
+    .replace(/St W(est)?$/, 'Street West')
 
     .replace(/ N( Road)?$/, ' North$1')
     .replace(/ S( Road)?$/, ' South$1')
@@ -83,6 +85,10 @@ export function amendStopDirection(stopName) {
   })
 }
 
+function fixStreetExpansion(stopName) {
+  return stopName.replace(/ St (Interchange|Park|Reserve|Shopping Centre|Central|Primary School|Police Complex)/, ' Street $1')
+}
+
 export default function processName(stopName) {
   let directionAmended = amendStopDirection(stopName)
   let cleanedMCG = cleanupMCG(directionAmended)
@@ -90,5 +96,7 @@ export default function processName(stopName) {
   let roadExpanded = expandRoadType(stationExpanded)
   let nameExpanded = expandStopName(roadExpanded)
 
-  return nameExpanded.trim().replace(/  +/g, ' ')
+  let permittedStreetFixed = fixStreetExpansion(nameExpanded)
+
+  return permittedStreetFixed.trim().replace(/  +/g, ' ')
 }
