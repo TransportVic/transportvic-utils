@@ -1,4 +1,4 @@
-import { DateTime } from 'luxon'
+import { DateTime, Info } from 'luxon'
 import CONSTANTS from '../constants.mjs'
 
 const { TIMEZONES } = CONSTANTS
@@ -9,4 +9,8 @@ export function parseDate(date) {
 
 export function toGTFSDate(date) {
   return date.toFormat('yyyyMMdd')
+}
+
+export function getDayOfWeek(date) {
+  return date.weekdayShort
 }
