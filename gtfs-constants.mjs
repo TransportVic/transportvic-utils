@@ -18,7 +18,13 @@ const GTFS_MODES = {
   11: TRANSIT_MODES.bus
 }
 
+const CALENDAR_DATES = {
+  ADDED: '1',
+  REMOVED: '2'
+}
+
 export default {
   TRANSIT_MODES,
-  GTFS_MODES
+  GTFS_MODES,
+  CALENDAR_DATES
 }
